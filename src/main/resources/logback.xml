@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--
+        Configuração de Logging - Logback
+        Define como os logs serão exibidos durante a execução
+    -->
+
+    <!-- Console Appender - Exibe logs no console com cores e formatação -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- Formato: [TIMESTAMP] [LEVEL] [LOGGER] - MESSAGE -->
+            <pattern>%d{HH:mm:ss.SSS} [%-5level] [%logger{36}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File Appender - Grava logs em arquivo -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/centralanexo.log</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%-5level] [%logger{36}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Configuração de nível de log por package -->
+    <logger name="org.example" level="DEBUG"/>
+    <logger name="org.example.source" level="INFO"/>
+    <logger name="org.example.service" level="INFO"/>
+
+    <!-- Root Logger - Level padrão -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
+
